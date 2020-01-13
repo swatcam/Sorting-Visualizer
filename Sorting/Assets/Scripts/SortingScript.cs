@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SortingScript : MonoBehaviour
 {
-    public float x;
+    //public float offset;
     public float y;
     public float speed;
     public int boxSize;
@@ -47,7 +47,17 @@ public class SortingScript : MonoBehaviour
             renderer.sprite = genSprite;
 
             box.transform.localScale = new Vector2(boxSize/100f, Mathf.Round(Random.Range(.01f, .1f) * 100f) / 100f);
-            box.transform.position = new Vector2((numberOfBoxes / x) + ((.4f * i) * boxSize), y);
+
+            if (i != 0)
+            {
+                box.transform.position = new Vector2(Boxes[0].transform.position.x + (.4f * i), y);
+            }
+            else
+            {
+                box.transform.position = new Vector2(-numberOfBoxes / 5f, y);
+            }
+
+            
             box.tag = "Box";
 
             Boxes[i] = box;

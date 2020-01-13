@@ -43,10 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4156bb15baf5e2f498eb828b0977eaf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: -5.1
+  offset: 2
   y: -1.2
   speed: 0.01
   boxSize: 1
   numberOfBoxes: 10
+  algorithm: 0
   tex: {fileID: 2800000, guid: 356b748652feb7c4486adfd134e00394, type: 3}
   Boxes: []

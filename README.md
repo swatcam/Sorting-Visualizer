@@ -1,2 +1,2 @@
 # Sorting-Visualizer
-A visualizer for different sorting algorithms.
+A visualizer for different sorting algorithms. Made in Unity.

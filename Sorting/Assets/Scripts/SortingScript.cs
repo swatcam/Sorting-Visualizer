@@ -79,7 +79,6 @@ public class SortingScript : MonoBehaviour
                 unsortedList[min] = temp;
 
                 Vector2 tempPos = unsortedList[i].transform.localPosition;
-
                 unsortedList[i].transform.position = new Vector2(unsortedList[min].transform.localPosition.x, y);
                 unsortedList[min].transform.position = new Vector2(tempPos.x, y);
             }
@@ -101,7 +100,6 @@ public class SortingScript : MonoBehaviour
                     unsortedList[j] = temp;
 
                     Vector2 tempPos = temp.transform.localPosition;
-
                     unsortedList[j].transform.position = new Vector2(unsortedList[j + 1].transform.localPosition.x, y);
                     unsortedList[j + 1].transform.position = new Vector2(tempPos.x, y);
                 }
@@ -122,7 +120,6 @@ public class SortingScript : MonoBehaviour
                 unsortedList[j - 1] = temp;
 
                 Vector2 tempPos = temp.transform.localPosition;
-
                 unsortedList[j - 1].transform.position = new Vector2(unsortedList[j].transform.localPosition.x, y);
                 unsortedList[j].transform.position = new Vector2(tempPos.x, y);
 

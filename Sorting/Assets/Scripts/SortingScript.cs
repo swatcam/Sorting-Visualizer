@@ -28,6 +28,9 @@ public class SortingScript : MonoBehaviour
             case 3:
                 StartCoroutine(InsertionSort(Boxes));
                 break;
+            case 4:
+                sort(Boxes);
+                break;
         }
     }
 
@@ -127,6 +130,56 @@ public class SortingScript : MonoBehaviour
 
                 yield return new WaitForSeconds(speed);
             }
+        }
+    }
+
+    IEnumerator HeapSort(GameObject[] unsortedList, int n, int i)
+    {
+        int largest = i;
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+
+        if (l < unsortedList.Length && unsortedList[l].transform.localPosition.y > unsortedList[largest].transform.localPosition.y)
+        {
+            largest = l;
+        }
+
+        if (r < n && unsortedList[r].transform.localPosition.y > unsortedList[largest].transform.localPosition.y)
+        {
+            largest = r;
+        }
+
+        if (largest != i)
+        {
+            GameObject swap = unsortedList[i];
+            unsortedList[i] = unsortedList[largest];
+            unsortedList[largest] = swap;
+
+            Vector2 tempPos = swap.transform.localPosition;
+
+            unsortedList[i].transform.position = new Vector2(unsortedList[largest].transform.localPosition.x, y);
+            unsortedList[largest].transform.position = new Vector2(tempPos.x, y);
+
+            yield return new WaitForSeconds(speed);
+
+            HeapSort(Boxes, n, largest);
+        }
+    }
+
+    void sort(GameObject[] unsortedList)
+    {
+        for (int i = unsortedList.Length / 2 - 1; i >= 0; i--)
+        {
+            HeapSort(Boxes, unsortedList.Length, i);
+        }
+
+        for (int i = unsortedList.Length - 1; i >=  0; i--)
+        {
+            GameObject temp = unsortedList[0];
+            unsortedList[0] = unsortedList[i];
+            unsortedList[i] = temp;
+
+            HeapSort(Boxes, i, 0);
         }
     }
 }
